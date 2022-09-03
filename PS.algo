@@ -1,0 +1,33 @@
+FUNCTION dot-product(V1, V2) : FLOAT
+VAR
+  
+    V1:ARRAY_OF FLOAT [2];
+    V2:ARRAY_OF FLOAT[2];
+BEGIN
+    ps:=(V1[1]*V2[1])+(V1[2]*V2[2])
+    RETURN ps ;
+END
+ALGORITHM ORTHO
+VAR
+ n:INTEGER;
+  vec1,vec2: ARRAY_OF FLOAT[2];
+
+BEGIN
+ Write("donner le nembre de paire de vecteur demandé")
+ read (n)
+ VAR   ORTHO: ARRAY_OF FLOAT[n];
+ FOR i FROM 0 TO n-1 STEP 1 DO
+ Write("entrer le premier vecteur du paire"+(i+1))
+ read(vec1)
+ Write ("entrer le deuxième vecteur du paire"+(i+1))
+ read(vec2)
+ ORTHO[i]:=dot-product (vec1, vec2);
+ END_FOR
+ FOR i FROM i TO n-1 STEP 1  DO
+    IF (ORTHO[i]=0) THEN
+        write ("les vecteurs num"+(i+1)+"sont orthogonaux")
+    ELSE
+        write ("les vecteurs num"+(i+1)+"ne sont pas orthogonaux")
+    END_IF
+ END_FOR
+END
